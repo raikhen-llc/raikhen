@@ -1,26 +1,189 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #00ff00;
+  --foreground-dim: #00aa00;
+  --accent: #00ffff;
+  --accent-dim: #008888;
+  --border: #333333;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Courier New", monospace;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+.terminal-window {
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+  overflow: visible;
+}
+
+.terminal-window-draggable {
+  transition: box-shadow 0.2s ease;
+}
+
+.terminal-window-draggable:hover {
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.15);
+}
+
+.terminal-window-draggable:active {
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+}
+
+.terminal-window-fullscreen {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+.terminal-window-fullscreen .terminal-header {
+  border-radius: 0;
+}
+
+/* Invisible resize handles - cursor change is the only feedback */
+.resize-handle {
+  background: transparent;
+}
+
+.terminal-header {
+  background: #1a1a1a;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 12px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-header-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-dot-red {
+  background: #ff5f56;
+}
+.terminal-dot-yellow {
+  background: #ffbd2e;
+}
+.terminal-dot-green {
+  background: #27ca40;
+}
+
+input,
+textarea {
+  background: #1a1a1a;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+/* Terminal input - completely transparent like a real terminal */
+.terminal-input {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.terminal-input:focus {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--foreground-dim);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--foreground-dim) transparent;
 }
