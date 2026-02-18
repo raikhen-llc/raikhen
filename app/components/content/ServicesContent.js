@@ -66,6 +66,53 @@ export default function ServicesContent() {
 `}
       </pre>
 
+      {/* Projects Header */}
+      <pre className="mt-4 text-[#00ffff] whitespace-pre font-bold">{`
+╔════════════════════════════════════════════════════════════╗
+║                      RECENT PROJECTS                       ║
+╚════════════════════════════════════════════════════════════╝
+`}</pre>
+
+      {/* Dihedral */}
+      <pre className="text-[#bb86fc] whitespace-pre">
+        {`┌──────────────────────────────────────────────────────────────┐
+│  `}
+        <a href="https://dihedral.app/" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">DIHEDRAL</a>
+        {`                                                    │
+│  `}
+        <span className="text-[#d4b0ff]">
+          Practice your climbing systems problem-solving
+        </span>
+        {`              │
+│  `}
+        <span className="text-[#d4b0ff]">
+          skills before it counts
+        </span>
+        {`                                     │
+└──────────────────────────────────────────────────────────────┘
+`}
+      </pre>
+
+      {/* Chesslet */}
+      <pre className="text-[#64b5f6] whitespace-pre">
+        {`┌──────────────────────────────────────────────────────────────┐
+│  `}
+        <a href="https://www.chesslet.xyz/" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">CHESSLET</a>
+        {`                                                    │
+│  `}
+        <span className="text-[#90caf9]">
+          Chess puzzle game in which the player must capture
+        </span>
+        {`          │
+│  `}
+        <span className="text-[#90caf9]">
+          their own pieces until only one remains
+        </span>
+        {`                     │
+└──────────────────────────────────────────────────────────────┘
+`}
+      </pre>
+
       <pre className="text-[#888] whitespace-pre"></pre>
       <br />
       <p className="text-[#888]">
