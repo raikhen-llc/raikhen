@@ -26,7 +26,7 @@ export async function POST(request) {
     if (!process.env.ANTHROPIC_API_KEY) {
       return Response.json(
         { error: "ANTHROPIC_API_KEY not configured" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -42,7 +42,7 @@ export async function POST(request) {
         async start(controller) {
           try {
             const response = await anthropic.messages.create({
-              model: "claude-3-5-haiku-20241022",
+              model: "claude-haiku-4-5-20251001",
               max_tokens: 1024,
               system: SYSTEM_PROMPT,
               stream: true,
@@ -84,7 +84,7 @@ export async function POST(request) {
 
     // Non-streaming fallback
     const response = await anthropic.messages.create({
-      model: "claude-3-5-haiku-20241022",
+      model: "claude-haiku-4-5-20251001",
       max_tokens: 1024,
       system: SYSTEM_PROMPT,
       messages: messages.map((m) => ({
@@ -103,7 +103,7 @@ export async function POST(request) {
     console.error("Chat API error:", error);
     return Response.json(
       { error: "Failed to process chat request" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
